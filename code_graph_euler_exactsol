@@ -1,0 +1,28 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Sep 13 12:03:31 2021
+
+@author: Uriel Zapata
+"""
+
+import math 
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 100 linearly spaced numbers
+#t = np.linspace(0,50,100)
+n=100
+dt=0.5
+t=np.arange(0,n,dt)
+# the function, which is y = x^3 here
+
+m=75
+c=12.5
+g=9.81
+v=0*t
+ve= ((g*m)/c)*(1-np.exp(-(c/m)*t))
+for k in range(1,t.size):
+    v[k] = v[k-1]+dt*(g-c*v[k-1]/m)
+    
+plt.plot(t,v,ve)
+plt.show()
